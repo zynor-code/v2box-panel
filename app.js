@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // منوی موبایل
   const menuButton = document.getElementById("menuBtn");
-  const menu = document.querySelector("[data-menu]");
+  const menu = document.querySelector(".sidebar");
 
   if (menuButton && menu) {
     menuButton.addEventListener("click", () => {
