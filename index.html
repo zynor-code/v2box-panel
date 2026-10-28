@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#071225">
+  <title>V2Box Panel</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="brand"><span class="brand-mark">➤</span><div><b>V2Box</b> <span>Panel</span></div></div>
+    <nav id="nav">
+      <button class="nav-item active" data-page="داشبورد">⌂ <span>داشبورد</span></button>
+      <button class="nav-item" data-page="کاربران">♟ <span>کاربران</span></button>
+      <button class="nav-item" data-page="کانفیگ‌ها">▤ <span>کانفیگ‌ها</span></button>
+      <button class="nav-item" data-page="ترافیک">⌁ <span>ترافیک</span></button>
+      <button class="nav-item" data-page="آمار">▥ <span>آمار</span></button>
+      <button class="nav-item" data-page="تنظیمات">⚙ <span>تنظیمات</span></button>
+    </nav>
+    <div class="sidebar-bottom"><div class="avatar">V</div><b>V2Box Panel</b><small>نسخه نمایشی · v1.0.0</small></div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <button class="icon-button" id="menuBtn" aria-label="باز و بسته کردن منو">☰</button>
+      <label class="search">⌕ <input id="searchInput" placeholder="جستجو در پنل..." autocomplete="off"></label>
+      <div class="top-actions"><button class="icon-button" id="themeBtn" title="تغییر پوسته">☼</button><span class="lang-pill">🇮🇷 فارسی</span><div class="admin"><b>مدیر</b><small>Administrator</small></div><div class="avatar">A</div></div>
+    </header>
+
+    <section class="page-heading">
+      <div><h1 id="pageTitle">داشبورد</h1><p>نمای کلی پنل، کاربران و کانفیگ‌ها</p></div>
+      <div class="date-pill">امروز <b id="today"></b></div>
+    </section>
+
+    <section class="stats-grid">
+      <article class="stat-card purple"><div class="stat-icon">♟</div><div class="stat-label">کل کاربران</div><strong>۱۲۸</strong><small>↑ ۱۲٪ <span>نسبت به هفته گذشته</span></small></article>
+      <article class="stat-card teal"><div class="stat-icon">↗</div><div class="stat-label">کانفیگ‌ها</div><strong>۵۶</strong><small>↑ ۸٪ <span>نسبت به هفته گذشته</span></small></article>
+      <article class="stat-card blue"><div class="stat-icon">▤</div><div class="stat-label">مصرف ترافیک</div><strong>۲.۴ TB</strong><small>↑ ۱۸٪ <span>نسبت به هفته گذشته</span></small></article>
+      <article class="stat-card orange"><div class="stat-icon">◷</div><div class="stat-label">کاربران آنلاین</div><strong>۳۲</strong><small>↑ ۲۱٪ <span>در حال حاضر</span></small></article>
+    </section>
+
+    <section class="content-grid">
+      <article class="panel chart-panel">
+        <div class="panel-head"><h2>نمودار مصرف ترافیک</h2><select id="rangeSelect" aria-label="بازه نمودار"><option>۷ روز گذشته</option><option>۳۰ روز گذشته</option></select></div>
+        <div class="chart-legend"><span><i class="dot blue-dot"></i> دانلود</span><span><i class="dot purple-dot"></i> آپلود</span></div>
+        <div class="chart-wrap"><div class="y-labels"><span>1.2 TB</span><span>1 TB</span><span>800 GB</span><span>600 GB</span><span>400 GB</span><span>200 GB</span><span>۰</span></div><canvas id="trafficChart" aria-label="نمودار نمایشی مصرف ترافیک"></canvas></div>
+        <div class="x-labels"><span>۱۷ مهر</span><span>۱۸ مهر</span><span>۱۹ مهر</span><span>۲۰ مهر</span><span>۲۱ مهر</span><span>۲۳ مهر</span><span>۲۵ مهر</span><span>۲۷ مهر</span></div>
+      </article>
+
+      <article class="panel status-panel">
+        <div class="panel-head"><h2>وضعیت کاربران</h2><span class="muted">نمایشی</span></div>
+        <div class="donut"><div><b>۱۲۸</b><small>کل کاربران</small></div></div>
+        <div class="status-row"><span><i class="dot green-dot"></i> آنلاین</span><b>۳۲</b><small>۲۵٪</small></div>
+        <div class="status-row"><span><i class="dot slate-dot"></i> آفلاین</span><b>۸۲</b><small>۶۴٪</small></div>
+        <div class="status-row"><span><i class="dot red-dot"></i> مسدود شده</span><b>۱۴</b><small>۱۱٪</small></div>
+      </article>
+
+      <article class="panel service-panel">
+        <div class="panel-head"><h2>وضعیت سرویس</h2><span class="online"><i class="dot green-dot"></i> آنلاین</span></div>
+        <div class="service-box"><b>V2Box Demo</b><small>نسخه رابط کاربری · v1.0.0</small></div>
+        <p class="muted">این نسخه فقط یک داشبورد سمت مرورگر است.</p>
+        <button class="primary-btn" id="connectionBtn">✓ بررسی رابط کاربری</button>
+        <div id="connectionMsg" class="connection-msg" role="status"></div>
+      </article>
+
+      <article class="panel table-panel users-panel">
+        <div class="panel-head"><h2>کاربران اخیر</h2><button class="text-btn" data-page="کاربران">مشاهده همه ←</button></div>
+        <div class="table-scroll"><table id="usersTable"><thead><tr><th>نام کاربری</th><th>وضعیت</th><th>مصرف</th><th>تاریخ</th></tr></thead><tbody>
+          <tr><td><span class="user-cell"><i class="mini-avatar">U</i> user_128</span></td><td><span class="badge good">آنلاین</span></td><td>۱۲.۴ GB</td><td>۱۴۰۴/۰۲/۲۷</td></tr>
+          <tr><td><span class="user-cell"><i class="mini-avatar">U</i> user_096</span></td><td><span class="badge bad">آفلاین</span></td><td>۸.۷ GB</td><td>۱۴۰۴/۰۲/۲۶</td></tr>
+          <tr><td><span class="user-cell"><i class="mini-avatar">U</i> user_072</span></td><td><span class="badge good">آنلاین</span></td><td>۴۵.۲ GB</td><td>۱۴۰۴/۰۲/۲۵</td></tr>
+          <tr><td><span class="user-cell"><i class="mini-avatar">U</i> user_041</span></td><td><span class="badge good">آنلاین</span></td><td>۲۲.۸ GB</td><td>۱۴۰۴/۰۲/۲۴</td></tr>
+          <tr><td><span class="user-cell"><i class="mini-avatar">U</i> user_033</span></td><td><span class="badge bad">آفلاین</span></td><td>۶.۱ GB</td><td>۱۴۰۴/۰۲/۲۳</td></tr>
+        </tbody></table></div>
+      </article>
+
+      <article class="panel table-panel configs-panel">
+        <div class="panel-head"><h2>کانفیگ‌های اخیر</h2><button class="text-btn" data-page="کانفیگ‌ها">مشاهده همه ←</button></div>
+        <div class="table-scroll"><table id="configsTable"><thead><tr><th>نام کانفیگ</th><th>نوع</th><th>کاربران</th><th>وضعیت</th><th></th></tr></thead><tbody>
+          <tr><td>Free-1</td><td>VLESS</td><td>۱۲</td><td><span class="badge good">فعال</span></td><td><button class="copy-btn" data-copy="demo://free-1">⧉</button></td></tr>
+          <tr><td>Premium-1</td><td>VMess</td><td>۸</td><td><span class="badge good">فعال</span></td><td><button class="copy-btn" data-copy="demo://premium-1">⧉</button></td></tr>
+          <tr><td>Test-Config</td><td>Shadowsocks</td><td>۵</td><td><span class="badge good">فعال</span></td><td><button class="copy-btn" data-copy="demo://test-config">⧉</button></td></tr>
+          <tr><td>Iran-Server</td><td>VLESS</td><td>۳</td><td><span class="badge good">فعال</span></td><td><button class="copy-btn" data-copy="demo://iran-server">⧉</button></td></tr>
+          <tr><td>USA-Server</td><td>VMess</td><td>۲</td><td><span class="badge good">فعال</span></td><td><button class="copy-btn" data-copy="demo://usa-server">⧉</button></td></tr>
+        </tbody></table></div>
+      </article>
+    </section>
+
+    <section class="panel features-panel">
+      <div class="panel-head"><h2>ویژگی‌های اصلی</h2><span class="muted">نسخه نمایشی پنل V2Box</span></div>
+      <div class="features-grid">
+        <div class="feature"><span class="feature-icon shield">⬡</span><b>امنیت</b><small>ساختار آماده توسعه</small></div>
+        <div class="feature"><span class="feature-icon speed">ϟ</span><b>سرعت</b><small>بدون فریم‌ورک سنگین</small></div>
+        <div class="feature"><span class="feature-icon device">▣</span><b>واکنش‌گرا</b><small>موبایل و دسکتاپ</small></div>
+        <div class="feature"><span class="feature-icon protocol">◎</span><b>پشتیبانی پروتکل</b><small>اطلاعات نمونه برای نمایش</small></div>
+        <div class="feature"><span class="feature-icon design">◉</span><b>طراحی مدرن</b><small>تم تیره و راست‌چین</small></div>
+      </div>
+    </section>
+    <footer>V2Box Panel · نسخه نمایشی متن‌باز · <span>هیچ اتصال واقعی به سرور برقرار نشده است.</span></footer>
+  </main>
+</div>
+<div class="toast" id="toast" role="status"></div>
+<script src="app.js"></script>
+</body>
+</html>
