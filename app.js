@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // منوی موبایل
-  const menuButton = document.querySelector("[data-menu-toggle]");
+  const menuButton = document.getElementById("menuBtn");
   const menu = document.querySelector("[data-menu]");
 
   if (menuButton && menu) {
