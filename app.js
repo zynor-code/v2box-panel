@@ -37,7 +37,8 @@ document.addEventListener("DOMContentLoaded", () => {
         menuButton.getAttribute("aria-expanded") === "true";
 
       menuButton.setAttribute("aria-expanded", String(!isExpanded));
-      menu.hidden = isExpanded;
+      const isOpen = menu.classList.toggle("open");
+menuButton.setAttribute("aria-expanded", String(isOpen));
     });
   }
 
